@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/pbProgress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:padding="@dimen/_4sdp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/btnSwap"
+        app:layout_constraintStart_toStartOf="@id/btnSwap"
+        app:layout_constraintTop_toBottomOf="@id/btnSwap" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etFromAmount"
+        style="@style/TextInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:hint="1.0"
+        app:layout_constraintEnd_toStartOf="@id/btnSwap"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilFrom" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnSwap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_swap"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_36sdp"
+        android:layout_marginStart="@dimen/_36sdp"
+        android:layout_marginTop="@dimen/_48sdp"
+        android:text="Details"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etFromAmount" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilFrom"
+        style="@style/TextInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:hint="From"
+        app:layout_constraintEnd_toStartOf="@id/btnSwap"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnSwap">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etFrom"
+            style="@style/EditTextInputLayout"
+            android:layout_marginEnd="0dp"
+            android:cursorVisible="false"
+            android:drawableEnd="@drawable/ic_arrow_down"
+            android:inputType="numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilTo"
+        style="@style/TextInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:hint="To"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnSwap"
+        app:layout_constraintTop_toTopOf="@id/btnSwap">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etTo"
+            style="@style/EditTextInputLayout"
+            android:layout_marginEnd="0dp"
+            android:cursorVisible="false"
+            android:drawableEnd="@drawable/ic_arrow_down"
+            android:inputType="numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvToAmount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/etFromAmount"
+        app:layout_constraintEnd_toEndOf="@id/tilTo"
+        app:layout_constraintStart_toStartOf="@id/tilTo"
+        app:layout_constraintTop_toTopOf="@id/etFromAmount"
+        tools:text="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

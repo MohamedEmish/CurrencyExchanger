@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/core_nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.amosh.currencyexchanger.ui.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+
+            <argument
+                android:name="fromCurrency"
+                android:defaultValue="@null"
+                app:argType="com.amosh.currencyexchanger.data.Currency"
+                app:nullable="true" />
+
+            <argument
+                android:name="toCurrency"
+                android:defaultValue="@null"
+                app:argType="com.amosh.currencyexchanger.data.Currency"
+                app:nullable="true" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.amosh.currencyexchanger.ui.detailsFragment.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_details">
+
+        <argument
+            android:name="fromCurrency"
+            android:defaultValue="@null"
+            app:argType="com.amosh.currencyexchanger.data.Currency"
+            app:nullable="true" />
+
+        <argument
+            android:name="toCurrency"
+            android:defaultValue="@null"
+            app:argType="com.amosh.currencyexchanger.data.Currency"
+            app:nullable="true" />
+
+    </fragment>
+</navigation>
