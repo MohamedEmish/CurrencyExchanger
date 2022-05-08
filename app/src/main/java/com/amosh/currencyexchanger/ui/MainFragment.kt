@@ -134,6 +134,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
         if (SystemClock.elapsedRealtime() - mLastClickTime < 2000) return
         mLastClickTime = SystemClock.elapsedRealtime()
 
+        viewModel.setEvent(MainViewModel.MainEvent.GetCurrenciesList)
+
         sheet =
             CurrenciesSheetFragment.newInstance(object : CurrenciesSheetFragment.OnActionsListener {
                 override fun onDoneListener(selection: String) {

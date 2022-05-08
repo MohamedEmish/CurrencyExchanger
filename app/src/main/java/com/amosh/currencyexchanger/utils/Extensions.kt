@@ -1,5 +1,9 @@
 package com.amosh.currencyexchanger.utils
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
@@ -33,4 +37,27 @@ fun Double.shorten(decimals: Int): Double{ return String.format("%.$decimals" + 
 
 fun <T> List<T>.toArrayList(): ArrayList<T>{
     return ArrayList(this)
+}
+
+@Suppress("DEPRECATION") // Fixed for higher versions
+fun Context?.isOffline(): Boolean {
+    val connectivityManager =
+        this?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+            ?: return true
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        val nw = connectivityManager.activeNetwork ?: return true
+        val actNw = connectivityManager.getNetworkCapabilities(nw) ?: return true
+        return when {
+            actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> false
+            actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> false
+            //for other device how are able to connect with Ethernet
+            actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> false
+            //for check internet over Bluetooth
+            actNw.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH) -> false
+            else -> true
+        }
+    } else {
+        val nwInfo = connectivityManager.activeNetworkInfo ?: return true
+        return !nwInfo.isConnected
+    }
 }
